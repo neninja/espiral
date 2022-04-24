@@ -13,7 +13,7 @@ digraph D {
 
     dev -> add -> commit;
 
-    commit -> push;
     commit -> dev;
+    commit -> push -> dev;
 }
 
