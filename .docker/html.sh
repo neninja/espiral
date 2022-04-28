@@ -1,6 +1,7 @@
 #!/bin/sh
 
-pandoc -s -N --metadata-file=content/meta.yml --toc \
+pandoc -s --metadata-file=content/meta.yml --toc \
+    --shift-heading-level-by=1 \
     --variable "geometry=margin=1in" \
     content/*/README.md \
     -o intro-dev-web.html
