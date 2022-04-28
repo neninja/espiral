@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    name: Build e deploy
+    #if: github.event_name == 'push' && github.ref == 'refs/heads/main'
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build
+        run: make html
+
+      - name: Create project directory
+        run: |
+          mkdir build
+          mv content build/content
+          rm -f build/content/**/*.md build/content/**/*.gv build/content/*.yml
+          mv intro-dev-web.html build/index.html
+
+      - name: Deploy
+        uses: peaceiris/actions-gh-pages@v3
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: ./build
