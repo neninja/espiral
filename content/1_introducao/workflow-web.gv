@@ -1,0 +1,10 @@
+digraph D {
+    rankdir=LR;
+
+    front [label="Cliente"];
+    back [label="Servidor"];
+
+    front -> back [xlabel="requisição"];
+    back -> front [label="resposta"];
+}
+
