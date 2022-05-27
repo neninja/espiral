@@ -35,6 +35,7 @@ jobs:
           upload_url: ${{ steps.create_release.outputs.upload_url }} 
           asset_path: ./intro-dev-web.pdf
           asset_name: intro-dev-web.pdf
+          asset_content_type: pdf
 
       - name: Upload EPUB
         uses: actions/upload-release-asset@v1
@@ -44,3 +45,4 @@ jobs:
           upload_url: ${{ steps.create_release.outputs.upload_url }} 
           asset_path: ./intro-dev-web.epub
           asset_name: intro-dev-web.epub
+          asset_content_type: epub
