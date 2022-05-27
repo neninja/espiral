@@ -16,9 +16,6 @@ jobs:
       - name: Build with pandoc
         run: make book
 
-      - name: Zip book
-        run: zip -r intro-dev-web intro-dev-web.pdf intro-dev-web.epub
-
       - name: Create release
         id: create_release
         uses: actions/create-release@v1
@@ -30,14 +27,18 @@ jobs:
           draft: false
           prerelease: false
 
-      - name: Upload release asset
-        id: upload-release-asset 
+      - name: Upload PDF
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          upload_url: ${{ steps.create_release.outputs.upload_url }} # This pulls from the CREATE RELEASE step above, referencing it's ID to get its outputs object, which include a `upload_url`. See this blog post for more info: https://jasonet.co/posts/new-features-of-github-actions/#passing-data-to-future-steps 
-          asset_path: ./intro-dev-web.zip
-          asset_name: intro-dev-web.zip
-          asset_content_type: application/zip
-# https://github.com/marketplace/actions/upload-a-release-asset
+          upload_url: ${{ steps.create_release.outputs.upload_url }} 
+          asset_path: ./intro-dev-web.pdf
+
+      - name: Upload EPUB
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }} 
+          asset_path: ./intro-dev-web.epub
