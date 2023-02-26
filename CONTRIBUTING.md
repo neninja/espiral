@@ -1,8 +1,8 @@
+[![emojicom](https://img.shields.io/badge/emojicom-%F0%9F%90%9B%20%F0%9F%86%95%20%F0%9F%92%AF%20%F0%9F%91%AE%20%F0%9F%86%98%20%F0%9F%92%A4-%23fff)](http://neni.dev/emojicom)
+
 # Contribuindo
 
 Encontrou um erro? Quer conversar/sugerir uma nova funcionalidade? Pode enviar uma *issue* ou *Pull Request* (PR) com a sugestão.
-
-> Créditos do documento ao time do [Angular](https://github.com/angular/angular/blob/master/CONTRIBUTING.md).
 
 ## Enviando uma issue
 
@@ -68,3 +68,22 @@ git push origin --delete my-fix-branch
 git fetch --all
 git reset --hard upstream/main
 ```
+## Desenvolvimento
+
+### Build local
+
+- Todos formatos
+```sh
+make all
+```
+
+- Livros (PDF e EPUB)
+```sh
+make book
+```
+
+- Site
+```sh
+make html
+```
+
