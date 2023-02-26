@@ -9,16 +9,16 @@ A ideia do projeto nasceu de dois interesses:
 
 > Caso tenha interesse em contribuir, seja acrescentando/melhorando/removendo assuntos quanto corrigindo erros de português, acesse o [projeto](https://github.com/nenitf/intro-dev-web)
 
-Mantido com uma linguagem informal, o conteúdo a seguir pretende ensinar de maneira simples assuntos introdutórios para entrar na área de desenvolvimento web. Para facilitar o roteiro de estudos é preciso delimitar o escopo, pois, dado o objetivo, quanto mais amplo menos específico. Assuntos que serão abordados:
+Mantido com uma linguagem informal, o conteúdo a seguir pretende ensinar de maneira simples assuntos introdutórios para entrar na área de desenvolvimento web. Abordaremos:
 
 - HTML, CSS e Javascript
 - Algoritmos com Javascript
 - Git
 - React
-- Lumen
+- Laravel
 - SQL
 
-Os assuntos serão pouco aprofundados, a proposta desse material é explicar o essencial para que você (leitor) estude tópicos mais avançados por conta própria ou saiba reconhecer cursos/livros interessantes. Não prometo que ao final do material você estará apto para a primeira vaga, pois acredito que após a leitura o ideal é desenvolver e expor projetos pequenos no [Github](https://github.com) e [Linkedin](https://www.linkedin.com).
+Os assuntos serão pouco aprofundados, a proposta desse material é explicar o essencial para que você (leitor) estude tópicos mais avançados por conta própria ou saiba reconhecer cursos/livros interessantes. Não prometo que ao final da leitura você estará apto para a primeira vaga, pois acredito que o ideal é desenvolver e expor projetos pequenos no [Github](https://github.com) e [Linkedin](https://www.linkedin.com).
 
 **Após** dominar os assuntos presentes nesse material, recomendo o estudo de:
 
@@ -27,11 +27,34 @@ Os assuntos serão pouco aprofundados, a proposta desse material é explicar o e
 
 ## Dicas iniciais
 
-- Desenvolvimento web não é fácil, mas também não é um absurdo de dificil para conseguir entrar na área e ser um profissional mediano;
-- Mantenha a paciência e não entre em crise, é muita ferramenta e conceito para aprender, não exija tanto de si;
-- O mais importante é ter um progresso gradual, assim como um quebra cabeça, aos poucos tudo vai fazer mais sentido;
-- Acredito que a única qualidade essencial para se tornar um desenvolvedor seja a resiliência: corriqueiramente haverá frustração com código, porém não deve deixar isso te desestabilizar;
-- Dúvidas e sugestões são muito bem vindas em formato de [issue](https://github.com/nenitf/intro-dev-web/issues);
+- Nunca é tarde para começar
+- Desenvolvimento web não é fácil, mas também não é tão dificil para conseguir entrar na área e ser um profissional mediano
+- Mantenha a paciência, é muita ferramenta e conceito para aprender, não exija tanto de si
+- O mais importante é ter um progresso gradual, assim como um quebra cabeça, aos poucos tudo vai fazer mais sentido
+- Acredito que a única qualidade essencial para se tornar um desenvolvedor seja a resiliência: corriqueiramente haverá frustração com código, porém não deve deixar isso te desestabilizar
+- Dúvidas e sugestões são muito bem vindas em formato de [issue](https://github.com/nenitf/intro-dev-web/issues)
+
+## FAQ
+
+1. Preciso fazer faculdade?
+
+> Não, algumas empresas maiores podem exigir, porém é muito fácil de encontrar vagas que não **se importam** com isso. Vale mais a pena focar em conseguir a primeira oportunidade e depois cogitar ir para uma faculdade.
+
+1. Preciso estudar inglês?
+
+> Não, mas certamente ajudaria para pesquisar mais tópicos e conteúdos mais especializados.
+
+1. Como devo ler o material?
+
+> Recomendo ler 3 vezes: 1) uma primeira leitura rápida para alinhar a expectativa do que será abordado, 2) mais calma fazendo anotações e praticando quando fizer sentido e 3) rápida para entender os conceitos abordados e praticados.
+
+1. Como deve ser o computador?
+
+> Acredito que no mínimo um processador i3 e 4gb de RAM.
+
+1. Qual editor de texto usar?
+
+> [Visual Studio Code](https://code.visualstudio.com/), não confundir com Visual Studio. Vai ser a ferramenta que usaremos para escrever nos arquivos.
 
 ## O que é a web
 
