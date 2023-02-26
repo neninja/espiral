@@ -87,3 +87,4 @@ make book
 make html
 ```
 
+> Caso não possua docker e/ou make, dê uma olhada no funcionamento do `Makefile`, `docker-compose-*.yml` e seus scripts em bash para ver quais dependências baixar para executar
