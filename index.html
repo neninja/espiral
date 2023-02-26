@@ -4,7 +4,7 @@
   <meta charset="utf-8" />
   <meta name="generator" content="pandoc" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes" />
-  <meta name="author" content="Felipe Silva" />
+  <meta name="author" content="Neni" />
   <title>Introdução ao desenvolvimento web</title>
   <style>
     html {
@@ -160,6 +160,70 @@
       vertical-align: middle;
     }
     .display.math{display: block; text-align: center; margin: 0.5rem auto;}
+    /* CSS for syntax highlighting */
+    pre > code.sourceCode { white-space: pre; position: relative; }
+    pre > code.sourceCode > span { display: inline-block; line-height: 1.25; }
+    pre > code.sourceCode > span:empty { height: 1.2em; }
+    .sourceCode { overflow: visible; }
+    code.sourceCode > span { color: inherit; text-decoration: inherit; }
+    div.sourceCode { margin: 1em 0; }
+    pre.sourceCode { margin: 0; }
+    @media screen {
+    div.sourceCode { overflow: auto; }
+    }
+    @media print {
+    pre > code.sourceCode { white-space: pre-wrap; }
+    pre > code.sourceCode > span { text-indent: -5em; padding-left: 5em; }
+    }
+    pre.numberSource code
+      { counter-reset: source-line 0; }
+    pre.numberSource code > span
+      { position: relative; left: -4em; counter-increment: source-line; }
+    pre.numberSource code > span > a:first-child::before
+      { content: counter(source-line);
+        position: relative; left: -1em; text-align: right; vertical-align: baseline;
+        border: none; display: inline-block;
+        -webkit-touch-callout: none; -webkit-user-select: none;
+        -khtml-user-select: none; -moz-user-select: none;
+        -ms-user-select: none; user-select: none;
+        padding: 0 4px; width: 4em;
+        color: #aaaaaa;
+      }
+    pre.numberSource { margin-left: 3em; border-left: 1px solid #aaaaaa;  padding-left: 4px; }
+    div.sourceCode
+      {   }
+    @media screen {
+    pre > code.sourceCode > span > a:first-child::before { text-decoration: underline; }
+    }
+    code span.al { color: #ff0000; font-weight: bold; } /* Alert */
+    code span.an { color: #60a0b0; font-weight: bold; font-style: italic; } /* Annotation */
+    code span.at { color: #7d9029; } /* Attribute */
+    code span.bn { color: #40a070; } /* BaseN */
+    code span.bu { color: #008000; } /* BuiltIn */
+    code span.cf { color: #007020; font-weight: bold; } /* ControlFlow */
+    code span.ch { color: #4070a0; } /* Char */
+    code span.cn { color: #880000; } /* Constant */
+    code span.co { color: #60a0b0; font-style: italic; } /* Comment */
+    code span.cv { color: #60a0b0; font-weight: bold; font-style: italic; } /* CommentVar */
+    code span.do { color: #ba2121; font-style: italic; } /* Documentation */
+    code span.dt { color: #902000; } /* DataType */
+    code span.dv { color: #40a070; } /* DecVal */
+    code span.er { color: #ff0000; font-weight: bold; } /* Error */
+    code span.ex { } /* Extension */
+    code span.fl { color: #40a070; } /* Float */
+    code span.fu { color: #06287e; } /* Function */
+    code span.im { color: #008000; font-weight: bold; } /* Import */
+    code span.in { color: #60a0b0; font-weight: bold; font-style: italic; } /* Information */
+    code span.kw { color: #007020; font-weight: bold; } /* Keyword */
+    code span.op { color: #666666; } /* Operator */
+    code span.ot { color: #007020; } /* Other */
+    code span.pp { color: #bc7a00; } /* Preprocessor */
+    code span.sc { color: #4070a0; } /* SpecialChar */
+    code span.ss { color: #bb6688; } /* SpecialString */
+    code span.st { color: #4070a0; } /* String */
+    code span.va { color: #19177c; } /* Variable */
+    code span.vs { color: #4070a0; } /* VerbatimString */
+    code span.wa { color: #60a0b0; font-weight: bold; font-style: italic; } /* Warning */
   </style>
   <!--[if lt IE 9]>
     <script src="//cdnjs.cloudflare.com/ajax/libs/html5shiv/3.7.3/html5shiv-printshiv.min.js"></script>
@@ -170,7 +234,7 @@
 <h1 class="title">Introdução ao desenvolvimento web</h1>
 <p class="subtitle">Conteúdo introdutório essencial para entrar na área
 de desenvolvimento web</p>
-<p class="author">Felipe Silva</p>
+<p class="author">Neni</p>
 </header>
 <nav id="TOC" role="doc-toc">
 <ul>
@@ -180,6 +244,7 @@ de desenvolvimento web</p>
 escopo</a></li>
 <li><a href="#dicas-iniciais" id="toc-dicas-iniciais">Dicas
 iniciais</a></li>
+<li><a href="#faq" id="toc-faq">FAQ</a></li>
 <li><a href="#o-que-é-a-web" id="toc-o-que-é-a-web">O que é a
 web</a></li>
 </ul></li>
@@ -196,9 +261,18 @@ id="toc-algoritmos-com-javascript">Algoritmos com Javascript</a></li>
 <li><a href="#introdução-ao-desenvolvimento-web-com-react"
 id="toc-introdução-ao-desenvolvimento-web-com-react">Introdução ao
 desenvolvimento web com React</a></li>
-<li><a href="#introdução-ao-desenvolvimento-web-com-lumen"
-id="toc-introdução-ao-desenvolvimento-web-com-lumen">Introdução ao
-desenvolvimento web com Lumen</a></li>
+<li><a href="#introdução-ao-desenvolvimento-web-com-laravel"
+id="toc-introdução-ao-desenvolvimento-web-com-laravel">Introdução ao
+desenvolvimento web com Laravel</a>
+<ul>
+<li><a href="#configuração-inicial"
+id="toc-configuração-inicial">Configuração inicial</a></li>
+<li><a href="#criação-do-projeto" id="toc-criação-do-projeto">Criação do
+projeto</a></li>
+<li><a href="#criando-a-reserva-simplificada"
+id="toc-criando-a-reserva-simplificada">Criando a reserva
+simplificada</a></li>
+</ul></li>
 <li><a href="#introdução-à-sql" id="toc-introdução-à-sql">Introdução à
 SQL</a></li>
 </ul>
@@ -218,24 +292,21 @@ href="https://github.com/nenitf/intro-dev-web">projeto</a></p>
 </blockquote>
 <p>Mantido com uma linguagem informal, o conteúdo a seguir pretende
 ensinar de maneira simples assuntos introdutórios para entrar na área de
-desenvolvimento web. Para facilitar o roteiro de estudos é preciso
-delimitar o escopo, pois, dado o objetivo, quanto mais amplo menos
-específico. Assuntos que serão abordados:</p>
+desenvolvimento web. Abordaremos:</p>
 <ul>
 <li>HTML, CSS e Javascript</li>
 <li>Algoritmos com Javascript</li>
 <li>Git</li>
 <li>React</li>
-<li>Lumen</li>
+<li>Laravel</li>
 <li>SQL</li>
 </ul>
 <p>Os assuntos serão pouco aprofundados, a proposta desse material é
 explicar o essencial para que você (leitor) estude tópicos mais
 avançados por conta própria ou saiba reconhecer cursos/livros
-interessantes. Não prometo que ao final do material você estará apto
-para a primeira vaga, pois acredito que após a leitura o ideal é
-desenvolver e expor projetos pequenos no <a
-href="https://github.com">Github</a> e <a
+interessantes. Não prometo que ao final da leitura você estará apto para
+a primeira vaga, pois acredito que o ideal é desenvolver e expor
+projetos pequenos no <a href="https://github.com">Github</a> e <a
 href="https://www.linkedin.com">Linkedin</a>.</p>
 <p><strong>Após</strong> dominar os assuntos presentes nesse material,
 recomendo o estudo de:</p>
@@ -245,19 +316,59 @@ recomendo o estudo de:</p>
 </ul>
 <h3 id="dicas-iniciais">Dicas iniciais</h3>
 <ul>
-<li>Desenvolvimento web não é fácil, mas também não é um absurdo de
-dificil para conseguir entrar na área e ser um profissional
-mediano;</li>
-<li>Mantenha a paciência e não entre em crise, é muita ferramenta e
-conceito para aprender, não exija tanto de si;</li>
+<li>Nunca é tarde para começar</li>
+<li>Desenvolvimento web não é fácil, mas também não é tão dificil para
+conseguir entrar na área e ser um profissional mediano</li>
+<li>Mantenha a paciência, é muita ferramenta e conceito para aprender,
+não exija tanto de si</li>
 <li>O mais importante é ter um progresso gradual, assim como um quebra
-cabeça, aos poucos tudo vai fazer mais sentido;</li>
+cabeça, aos poucos tudo vai fazer mais sentido</li>
 <li>Acredito que a única qualidade essencial para se tornar um
 desenvolvedor seja a resiliência: corriqueiramente haverá frustração com
-código, porém não deve deixar isso te desestabilizar;</li>
+código, porém não deve deixar isso te desestabilizar</li>
 <li>Dúvidas e sugestões são muito bem vindas em formato de <a
-href="https://github.com/nenitf/intro-dev-web/issues">issue</a>;</li>
+href="https://github.com/nenitf/intro-dev-web/issues">issue</a></li>
 </ul>
+<h3 id="faq">FAQ</h3>
+<ol type="1">
+<li>Preciso fazer faculdade?</li>
+</ol>
+<blockquote>
+<p>Não, algumas empresas maiores podem exigir, porém é muito fácil de
+encontrar vagas que não <strong>se importam</strong> com isso. Vale mais
+a pena focar em conseguir a primeira oportunidade e depois cogitar ir
+para uma faculdade.</p>
+</blockquote>
+<ol type="1">
+<li>Preciso estudar inglês?</li>
+</ol>
+<blockquote>
+<p>Não, mas certamente ajudaria para pesquisar mais tópicos e conteúdos
+mais especializados.</p>
+</blockquote>
+<ol type="1">
+<li>Como devo ler o material?</li>
+</ol>
+<blockquote>
+<p>Recomendo ler 3 vezes: 1) uma primeira leitura rápida para alinhar a
+expectativa do que será abordado, 2) mais calma fazendo anotações e
+praticando quando fizer sentido e 3) rápida para entender os conceitos
+abordados e praticados.</p>
+</blockquote>
+<ol type="1">
+<li>Como deve ser o computador?</li>
+</ol>
+<blockquote>
+<p>Acredito que no mínimo um processador i3 e 4gb de RAM.</p>
+</blockquote>
+<ol type="1">
+<li>Qual editor de texto usar?</li>
+</ol>
+<blockquote>
+<p><a href="https://code.visualstudio.com/">Visual Studio Code</a>, não
+confundir com Visual Studio. Vai ser a ferramenta que usaremos para
+escrever nos arquivos.</p>
+</blockquote>
 <h3 id="o-que-é-a-web">O que é a web</h3>
 <p>O desenvolvimento web é uma área específica dentro da área de
 desenvolvimento de <em>software</em> (programa). De maneira
@@ -278,9 +389,101 @@ para o usuário final;</li>
 responsabiliza com a regras de negócio e acesso ao banco de dados;</li>
 </ul>
 <h2 id="html-css-javascript">HTML + CSS + Javascript</h2>
+<p>Uma página web normalmente vai ter um conteúdo, estilização e
+interação (respectivamente: <em>HTML</em>, <em>CSS</em> e
+<em>Javascript</em>). O navegador/browser lê os arquivos recebidos do
+back-end (<code>.html</code>, <code>.css</code> e <code>.js</code>) e
+renderiza de acordo. Porém com
+<kbd>ctrl</kbd><kbd>shift</kbd><kbd>i</kbd> podemos ver como eles
+realmente são: texto!</p>
 <h3 id="html">HTML</h3>
+<h4 id="propósito">Propósito</h4>
+<p>Imagine o seuginte cenário: O navegador recebe um arquivo contendo
+todo o conteúdo do site, como ele sabe o que é título, link, lista e
+etc? Afinal, é uma informação necessária para delimitar a informação,
+exemplo:</p>
+<div class="sourceCode" id="cb1"><pre
+class="sourceCode txt"><code class="sourceCode default"><span id="cb1-1"><a href="#cb1-1" aria-hidden="true" tabindex="-1"></a>Lista de compras</span>
+<span id="cb1-2"><a href="#cb1-2" aria-hidden="true" tabindex="-1"></a>Mercado</span>
+<span id="cb1-3"><a href="#cb1-3" aria-hidden="true" tabindex="-1"></a>Farinha</span>
+<span id="cb1-4"><a href="#cb1-4" aria-hidden="true" tabindex="-1"></a>Leite</span>
+<span id="cb1-5"><a href="#cb1-5" aria-hidden="true" tabindex="-1"></a>Ovos</span></code></pre></div>
+<p>Pode ser lido como</p>
+<div class="sourceCode" id="cb2"><pre
+class="sourceCode txt"><code class="sourceCode default"><span id="cb2-1"><a href="#cb2-1" aria-hidden="true" tabindex="-1"></a>Lista de compras &lt;- titulo</span>
+<span id="cb2-2"><a href="#cb2-2" aria-hidden="true" tabindex="-1"></a>Mercado          &lt;- item da lista</span>
+<span id="cb2-3"><a href="#cb2-3" aria-hidden="true" tabindex="-1"></a>Farinha          &lt;- item da lista</span>
+<span id="cb2-4"><a href="#cb2-4" aria-hidden="true" tabindex="-1"></a>Leite            &lt;- item da lista</span>
+<span id="cb2-5"><a href="#cb2-5" aria-hidden="true" tabindex="-1"></a>Ovos             &lt;- item da lista</span></code></pre></div>
+<p>ou</p>
+<div class="sourceCode" id="cb3"><pre
+class="sourceCode txt"><code class="sourceCode default"><span id="cb3-1"><a href="#cb3-1" aria-hidden="true" tabindex="-1"></a>Lista de compras &lt;- titulo</span>
+<span id="cb3-2"><a href="#cb3-2" aria-hidden="true" tabindex="-1"></a>Mercado          &lt;- subtitulo</span>
+<span id="cb3-3"><a href="#cb3-3" aria-hidden="true" tabindex="-1"></a>Farinha          &lt;- item da lista</span>
+<span id="cb3-4"><a href="#cb3-4" aria-hidden="true" tabindex="-1"></a>Leite            &lt;- item da lista</span>
+<span id="cb3-5"><a href="#cb3-5" aria-hidden="true" tabindex="-1"></a>Ovos             &lt;- item da lista</span></code></pre></div>
+<h4 id="tags">Tags</h4>
+<p>Para isso existem as tags, cujo explicitam a intenção de um grupo de
+texto. O exemplo anterior ficaria da seguinte forma:</p>
+<div class="sourceCode" id="cb4"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb4-1"><a href="#cb4-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;h1&gt;</span>Lista de compras<span class="kw">&lt;/h1&gt;</span></span>
+<span id="cb4-2"><a href="#cb4-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;h2&gt;</span>Mercado<span class="kw">&lt;/h2&gt;</span></span>
+<span id="cb4-3"><a href="#cb4-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;ul&gt;</span></span>
+<span id="cb4-4"><a href="#cb4-4" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;li&gt;</span>Farinha<span class="kw">&lt;/li&gt;</span></span>
+<span id="cb4-5"><a href="#cb4-5" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;li&gt;</span>Leite<span class="kw">&lt;/li&gt;</span></span>
+<span id="cb4-6"><a href="#cb4-6" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;li&gt;</span>Ovos<span class="kw">&lt;/li&gt;</span></span>
+<span id="cb4-7"><a href="#cb4-7" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/ul&gt;</span></span></code></pre></div>
+<p>Tags abrem, envolvem e fecham da seguinte maneira:
+<code>&lt;nome&gt;conteudo&lt;/nome&gt;</code></p>
+<blockquote>
+<p><strong>Sua vez</strong>: Crie um arquivo chamado
+<code>teste.html</code>, e abra de duas maneiras diferentes: 1) com seu
+editor de texto e 2) com o navegador. Escreva a lista de compras pelo
+editor de texto e visualize as alterações no navegador! Lembre de
+atualizar a página do navegador com <kbd>F5</kbd> a cada mudança.</p>
+</blockquote>
+<p>Todas tags podem possuir classes e <strong>um</strong> id. Esses
+artíficios não são visuais, eles servem para registrar de alguma forma
+essa tag para poder ser utilizada mais facilmente pelo CSS e
+Javascript.</p>
+<div class="sourceCode" id="cb5"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb5-1"><a href="#cb5-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;h1</span> <span class="er">class</span><span class="ot">=</span><span class="st">&quot;titulo&quot;</span><span class="kw">&gt;</span>Lista de compras<span class="kw">&lt;/h1&gt;</span></span>
+<span id="cb5-2"><a href="#cb5-2" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;h2</span> <span class="er">id</span><span class="ot">=</span><span class="st">&quot;subtitulo&quot;</span><span class="kw">&gt;</span>Mercado<span class="kw">&lt;/h2&gt;</span></span>
+<span id="cb5-3"><a href="#cb5-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;ul&gt;</span></span>
+<span id="cb5-4"><a href="#cb5-4" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;li</span> <span class="er">class</span><span class="ot">=</span><span class="st">&quot;item-novo importante&quot;</span><span class="kw">&gt;</span>Farinha<span class="kw">&lt;/li&gt;</span></span>
+<span id="cb5-5"><a href="#cb5-5" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;li</span> <span class="er">class</span><span class="ot">=</span><span class="st">&quot;&quot;</span><span class="kw">&gt;</span>Leite<span class="kw">&lt;/li&gt;</span></span>
+<span id="cb5-6"><a href="#cb5-6" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;li</span> <span class="er">class</span><span class="ot">=</span><span class="st">&quot;importante&quot;</span><span class="kw">&gt;</span>Ovos<span class="kw">&lt;/li&gt;</span></span>
+<span id="cb5-7"><a href="#cb5-7" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/ul&gt;</span></span></code></pre></div>
 <h3 id="css">CSS</h3>
+<p>Não basta especificar um título, link etc, precisamos estilizá-lo
+também. Tamanho da fonte, cor, alinhamento e outras propriedades são
+configuráveis.</p>
+<p>Essas estilizações são feitas com um arquivo <code>.css</code>, para
+mudar a cor do título podemos fazer o seguinte:</p>
+<div class="sourceCode" id="cb6"><pre
+class="sourceCode css"><code class="sourceCode css"><span id="cb6-1"><a href="#cb6-1" aria-hidden="true" tabindex="-1"></a>h1 {</span>
+<span id="cb6-2"><a href="#cb6-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span>: <span class="cn">blue</span><span class="op">;</span></span>
+<span id="cb6-3"><a href="#cb6-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Especificamos com um <em>seletor</em> e em seguida atribuimos alguma
+de suas propriedades. Os seletores mais comuns são: nome da tag, classe
+ou id.</p>
+<div class="sourceCode" id="cb7"><pre
+class="sourceCode css"><code class="sourceCode css"><span id="cb7-1"><a href="#cb7-1" aria-hidden="true" tabindex="-1"></a><span class="fu">.titulo</span> { <span class="co">/* classe */</span></span>
+<span id="cb7-2"><a href="#cb7-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span>: <span class="cn">blue</span><span class="op">;</span></span>
+<span id="cb7-3"><a href="#cb7-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<div class="sourceCode" id="cb8"><pre
+class="sourceCode css"><code class="sourceCode css"><span id="cb8-1"><a href="#cb8-1" aria-hidden="true" tabindex="-1"></a><span class="pp">#subtitulo</span> { <span class="co">/* id */</span></span>
+<span id="cb8-2"><a href="#cb8-2" aria-hidden="true" tabindex="-1"></a>    <span class="kw">color</span>: <span class="cn">blue</span><span class="op">;</span></span>
+<span id="cb8-3"><a href="#cb8-3" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<p>Para utilizar as definições feitas pelo CSS precisamos importar elas
+no nosso HTML precisamos alterá-lo com:</p>
+<div class="sourceCode" id="cb9"><pre
+class="sourceCode html"><code class="sourceCode html"><span id="cb9-1"><a href="#cb9-1" aria-hidden="true" tabindex="-1"></a> <span class="kw">&lt;head&gt;</span></span>
+<span id="cb9-2"><a href="#cb9-2" aria-hidden="true" tabindex="-1"></a>  <span class="kw">&lt;link</span> <span class="er">rel</span><span class="ot">=</span><span class="st">&quot;stylesheet&quot;</span> <span class="er">href</span><span class="ot">=</span><span class="st">&quot;./nome-do-arquivo.css&quot;</span><span class="kw">&gt;</span></span>
+<span id="cb9-3"><a href="#cb9-3" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;/head&gt;</span> </span></code></pre></div>
 <h3 id="javascript">Javascript</h3>
+<p>Com conteúdo estruturado e estilizado falta adicionar interação ao
+site.</p>
 <h2 id="algoritmos-com-javascript">Algoritmos com Javascript</h2>
 <h2 id="git-e-github">Git e Github</h2>
 <p><img src="content/4_git/workflow.gv.svg" style="width:50.0%"
@@ -288,8 +491,95 @@ alt="Fluxo de trabalho comum" /><br />
 </p>
 <h2 id="introdução-ao-desenvolvimento-web-com-react">Introdução ao
 desenvolvimento web com React</h2>
-<h2 id="introdução-ao-desenvolvimento-web-com-lumen">Introdução ao
-desenvolvimento web com Lumen</h2>
+<h2 id="introdução-ao-desenvolvimento-web-com-laravel">Introdução ao
+desenvolvimento web com Laravel</h2>
+<p>Criaremos um sistema de agendamento chamado Reiserva onde que:</p>
+<ul>
+<li>Teremos 3 tipos de usuários, sendo 1) administrador 2) moderadores
+3) cliente</li>
+<li>Teremos ambientes que podem ser reservados</li>
+<li>Dependendo do ambiente as reservas podem:
+<ul>
+<li>ser por dia, horários específicos ou horário livre</li>
+<li>restrita a 1 ou mais clientes</li>
+</ul></li>
+</ul>
+<h3 id="configuração-inicial">Configuração inicial</h3>
+<ul>
+<li><a href="https://www.php.net/downloads.php">Baixe o PHP</a>, e
+habilite as extensões <code>BCMath</code> <code>Ctype</code>
+<code>Fileinfo</code> <code>JSON</code> <code>Mbstring</code>
+<code>OpenSSL</code> <code>PDO</code> <code>Tokenizer</code>
+<code>XML</code></li>
+<li><a href="https://getcomposer.org/download/">Baixe o
+Composer</a></li>
+</ul>
+<h3 id="criação-do-projeto">Criação do projeto</h3>
+<p>Acesse a pasta onde guarda seus projetos, abra um terminal e
+execute</p>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">composer</span> create-project laravel/laravel reiserva</span></code></pre></div>
+<h3 id="criando-a-reserva-simplificada">Criando a reserva
+simplificada</h3>
+<p>Trabalharemos com <em>TDD</em>, primeiro criamos um teste falho,
+fazemos ele passar, melhoramos e repetimos.</p>
+<p>Crie o teste com
+<code>php artisan make:test ReservaServiceTest</code>, edite o arquivo
+alterando o nome da função para <code>testReservaAmbiente</code>. Vamos
+testar que dado um usuário (<code>User</code>) e um ambiente, podemos
+criar uma reserva através da classe <code>ReservaService</code>.</p>
+<p>Crie as outras classes que usaremos:</p>
+<ul>
+<li><code>ReservaService</code> como
+<code>app/Services/ReservaService.test</code></li>
+<li>As models com <code>php arisan make:model Reserva</code>
+<code>php arisan make:model Ambiente</code></li>
+</ul>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode php"><code class="sourceCode php"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;?php</span></span>
+<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="kw">namespace</span> <span class="cn">T</span>ests\<span class="cn">U</span>nit<span class="ot">;</span></span>
+<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="cn">A</span>pp\<span class="cn">M</span>odels\<span class="cn">U</span>ser<span class="ot">;</span></span>
+<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="cn">A</span>pp\<span class="cn">M</span>odels\<span class="cn">A</span>mbiente<span class="ot">;</span></span>
+<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="cn">A</span>pp\<span class="cn">M</span>odels\<span class="cn">R</span>eserva<span class="ot">;</span></span>
+<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="cn">A</span>pp\<span class="cn">S</span>ervices\<span class="cn">R</span>eservaService<span class="ot">;</span></span>
+<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="cn">I</span>lluminate\<span class="cn">F</span>oundation\<span class="cn">T</span>esting\<span class="cn">R</span>efreshDatabase<span class="ot">;</span></span>
+<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="cn">T</span>ests\<span class="cn">T</span>estCase<span class="ot">;</span></span>
+<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> <span class="cn">R</span>eservaServiceTest <span class="kw">extends</span> <span class="cn">T</span>estCase</span>
+<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">use</span> <span class="cn">R</span>efreshDatabase<span class="ot">;</span></span>
+<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> testReservaAmbiente()<span class="ot">:</span> <span class="dt">void</span></span>
+<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Arrange: usuário existente</span></span>
+<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>        <span class="va">$usuario</span> <span class="op">=</span> <span class="kw">new</span> <span class="cn">U</span>ser([</span>
+<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;name&#39;</span> =&gt; <span class="st">&#39;Fulano de tal&#39;</span><span class="ot">,</span></span>
+<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;email&#39;</span> =&gt;<span class="st">&#39;fulano@tal.com&#39;</span><span class="ot">,</span></span>
+<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;password&#39;</span>=&gt; <span class="st">&#39;123&#39;</span><span class="ot">,</span></span>
+<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>        ])<span class="ot">;</span></span>
+<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>        <span class="va">$usuario</span>-&gt;save()<span class="ot">;</span></span>
+<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Arrange: ambiente existente</span></span>
+<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>        <span class="va">$ambiente</span> <span class="op">=</span> <span class="kw">new</span> <span class="cn">A</span>mbiente()<span class="ot">;</span></span>
+<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>        <span class="va">$ambiente</span>-&gt;nome <span class="op">=</span> <span class="st">&#39;Salão de festas&#39;</span><span class="ot">;</span></span>
+<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>        <span class="va">$ambiente</span>-&gt;save()<span class="ot">;</span></span>
+<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Act: criação da reserva</span></span>
+<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>        <span class="va">$sut</span> <span class="op">=</span> <span class="kw">new</span> <span class="cn">R</span>eservaService()<span class="ot">;</span></span>
+<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>        <span class="va">$sut</span>-&gt;criar(<span class="va">$ambiente</span><span class="ot">,</span> <span class="va">$usuario</span>)<span class="ot">;</span></span>
+<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Assert: existência da reserva no banco de dados</span></span>
+<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>        <span class="va">$this</span>-&gt;assertDatabaseHas(<span class="cn">R</span>eserva::<span class="kw">class</span><span class="ot">,</span> [</span>
+<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;id_ambiente&#39;</span>=&gt; <span class="va">$ambiente</span>-&gt;id<span class="ot">,</span></span>
+<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;id_usuario&#39;</span>=&gt; <span class="va">$usuario</span>-&gt;id</span>
+<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a>        ])<span class="ot">;</span></span>
+<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<!-- migration -->
+<!-- explicar centralização de regra de negocio na service -->
+<!-- diagrama de arquitetura proposta rota -] controller -] service-->
 <h2 id="introdução-à-sql">Introdução à SQL</h2>
 </body>
 </html>
