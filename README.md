@@ -11,3 +11,21 @@ Livro para iniciar pessoas interessadas na área de desenvolvimento web.
 ## Contribuição
 
 Quer ajudar? Leia o [guia](CONTRIBUTING.md) e os [objetivos estipulados](https://github.com/nenitf/intro-dev-web/milestones?with_issues=no)
+
+
+INTRODUÇÃO
+- dicas
+- editores de texto
+
+WEB ESTÁTICA
+- html
+- css
+- javascript
+
+GIT
+
+ALGORITMOS COM JAVASCRIPT
+
+REACT
+
+PHP, LARAVEL E PSQL

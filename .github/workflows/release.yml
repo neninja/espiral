@@ -27,22 +27,72 @@ jobs:
           draft: false
           prerelease: false
 
-      - name: Upload PDF
+      - name: Upload livro1_nivelamento
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} 
-          asset_path: ./intro-dev-web.pdf
-          asset_name: intro-dev-web.pdf
+          asset_path: ./build/livro1_nivelamento.pdf
+          asset_name: livro1_nivelamento.pdf
           asset_content_type: pdf
 
-      - name: Upload EPUB
+      - name: Upload livro2_web-estatica
         uses: actions/upload-release-asset@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }} 
-          asset_path: ./intro-dev-web.epub
-          asset_name: intro-dev-web.epub
-          asset_content_type: epub
+          asset_path: ./build/livro2_web-estatica.pdf
+          asset_name: livro2_web-estatica.pdf
+          asset_content_type: pdf
+
+      - name: Upload livro3_algoritmos
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }} 
+          asset_path: ./build/livro3_algoritmos.pdf
+          asset_name: livro3_algoritmos.pdf
+          asset_content_type: pdf
+
+      - name: Upload livro4_git
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }} 
+          asset_path: ./build/livro4_git.pdf
+          asset_name: livro4_git.pdf
+          asset_content_type: pdf
+
+      - name: Upload livro5_frontend
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }} 
+          asset_path: ./build/livro5_frontend.pdf
+          asset_name: livro5_frontend.pdf
+          asset_content_type: pdf
+
+      - name: Upload livro6_backend
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }} 
+          asset_path: ./build/livro6_backend.pdf
+          asset_name: livro6_backend.pdf
+          asset_content_type: pdf
+
+      - name: Upload livro7_deploy
+        uses: actions/upload-release-asset@v1
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          upload_url: ${{ steps.create_release.outputs.upload_url }} 
+          asset_path: ./build/livro7_deploy.pdf
+          asset_name: livro7_deploy.pdf
+          asset_content_type: pdf

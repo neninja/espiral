@@ -60,7 +60,7 @@ Os assuntos serão pouco aprofundados, a proposta desse material é explicar o e
 
 O desenvolvimento web é uma área específica dentro da área de desenvolvimento de *software* (programa). De maneira simplificada, a web é o acesso a sites/sistemas online utilizando o protocolo *HTTP*, onde que é feita uma requisição a um servidor e é retornada uma resposta (podendo ser em HTML, JSON ou outros formatos).
 
-![Fluxo de web](content/1_introducao/workflow-web.gv.svg ){ width=50% }\
+![Fluxo de web](content/livro1_nivelamento/1_introducao/workflow-web.gv.svg ){ width=50% }\
 
 Se tratando de desenvolvimento web existem duas ramificações:
 

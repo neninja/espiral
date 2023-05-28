@@ -1,4 +1,3 @@
-intro-dev-web.pdf
-intro-dev-web.html
-intro-dev-web.epub
+build/*
+!build/.gitkeep
 *.svg

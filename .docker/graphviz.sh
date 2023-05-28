@@ -1,3 +1,3 @@
 #!/bin/sh
 
-dot -Tsvg -O content/*/*.gv
+dot -Tsvg -O content/*/*/*.gv
