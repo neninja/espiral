@@ -672,7 +672,7 @@ falhou por faltar algumas dessas classes</li>
 <div class="sourceCode" id="cb13"><pre
 class="sourceCode txt"><code class="sourceCode default"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>FAILED  Tests\Unit\ReservaServiceTest &gt; reserva ambiente</span>
 <span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>Class &quot;Tests\Unit\User&quot; not found</span></code></pre></div>
-<ol start="5" type="1">
+<ol start="4" type="1">
 <li>Crie as classes que faltam:</li>
 </ol>
 <ul>
@@ -694,7 +694,7 @@ class="sourceCode php"><code class="sourceCode php"><span id="cb14-1"><a href="#
 <span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>        <span class="co">// ...</span></span>
 <span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    }</span>
 <span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<ol start="6" type="1">
+<ol start="5" type="1">
 <li>Reexecute o teste
 (<code>php artisan test --filter testReservaAmbiente</code>) e perceba
 que o erro mudou. Agora ele está falhando pois não sabe persistir
@@ -710,7 +710,7 @@ class="sourceCode txt"><code class="sourceCode default"><span id="cb15-1"><a hre
 alterar a estrutura do banco de dados, seja criando tabelas ou até
 modificando-as (renomeando campos, mudando seus tipos etc)</p>
 </blockquote>
-<ol start="7" type="1">
+<ol start="6" type="1">
 <li>Crie a migration com
 <code>php artisan make:migration cria_ambiente --create=ambientes</code>
 e acesse o arquivo criado dentro de <code>database/migrations</code>.
@@ -725,7 +725,7 @@ class="sourceCode php"><code class="sourceCode php"><span id="cb16-1"><a href="#
 <span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>            <span class="va">$table</span>-&gt;timestamps()<span class="ot">;</span></span>
 <span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>        })<span class="ot">;</span></span>
 <span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co">// ...</span></span></code></pre></div>
-<ol start="8" type="1">
+<ol start="7" type="1">
 <li>Reexecute o teste
 (<code>php artisan test --filter testReservaAmbiente</code>) e perceba
 que ocorreu o mesmo com a tabela de reservas. Crie uma nova migration
@@ -742,7 +742,7 @@ class="sourceCode php"><code class="sourceCode php"><span id="cb17-1"><a href="#
 <span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>            <span class="va">$table</span>-&gt;timestamps()<span class="ot">;</span></span>
 <span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>        })<span class="ot">;</span></span>
 <span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co">// ...</span></span></code></pre></div>
-<ol start="9" type="1">
+<ol start="8" type="1">
 <li>Reexecute o teste e o erro muda, agora ele está falhando pois não
 foi encontrada uma reserva persistida com o id do usuário e do
 ambiente</li>
@@ -753,7 +753,7 @@ class="sourceCode txt"><code class="sourceCode default"><span id="cb18-1"><a hre
 <span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  &quot;id_ambiente&quot;: 1,</span>
 <span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  &quot;id_usuario&quot;: 1</span>
 <span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>}.</span></code></pre></div>
-<ol start="10" type="1">
+<ol start="9" type="1">
 <li>Vamos finalizar a funcionalidade persistindo a <em>Reserva</em> no
 <em>Service</em>, reexecutar o teste e validar o sucesso</li>
 </ol>
