@@ -265,6 +265,9 @@ desenvolvimento web com React</a></li>
 id="toc-introdução-ao-desenvolvimento-web-com-laravel">Introdução ao
 desenvolvimento web com Laravel</a>
 <ul>
+<li><a href="#syntax-php" id="toc-syntax-php">Syntax php</a></li>
+<li><a href="#organização-proposta"
+id="toc-organização-proposta">Organização proposta</a></li>
 <li><a href="#configuração-inicial"
 id="toc-configuração-inicial">Configuração inicial</a></li>
 <li><a href="#criação-do-projeto" id="toc-criação-do-projeto">Criação do
@@ -493,7 +496,9 @@ alt="Fluxo de trabalho comum" /><br />
 desenvolvimento web com React</h2>
 <h2 id="introdução-ao-desenvolvimento-web-com-laravel">Introdução ao
 desenvolvimento web com Laravel</h2>
-<p>Criaremos um sistema de agendamento chamado Reiserva onde que:</p>
+<p>Criaremos um sistema de agendamento chamado <a
+href="http://github.com/nenitf/reiserva2"><em>Reiserva</em></a> onde
+que:</p>
 <ul>
 <li>Teremos 3 tipos de usuários, sendo 1) administrador 2) moderadores
 3) cliente</li>
@@ -504,6 +509,79 @@ desenvolvimento web com Laravel</h2>
 <li>restrita a 1 ou mais clientes</li>
 </ul></li>
 </ul>
+<p>Trabalharemos com <em>TDD</em>, primeiro criamos um teste falho,
+fazemos ele passar, melhoramos e repetimos. O foco será sempre utilizar
+o teste, não necessariamente validar em tela algum fluxo, mas sinta-se
+livre para fazê-lo.</p>
+<p>Algumas vezes nos testes utilizaremos os seguintes termos para
+comentar a intenção estrutural do bloco de código dentro do teste:</p>
+<ul>
+<li><em>arrange</em>: criação do contexto do teste</li>
+</ul>
+<blockquote>
+<p>Qual usuário? Qual contexto do banco?</p>
+</blockquote>
+<ul>
+<li><em>act</em>: execução do que está sendo efetivamente testado</li>
+</ul>
+<blockquote>
+<p>Qual o método que vai ser chamado?</p>
+</blockquote>
+<ul>
+<li><em>assert</em>: confirmação das expectativas criadas no teste</li>
+</ul>
+<blockquote>
+<p>Quais as consequências? Elas correspondem ao esperado? Valor
+persistido? Evento emitido? E-mail enviado?</p>
+</blockquote>
+<h3 id="syntax-php">Syntax php</h3>
+<p>Breve explicação da syntax do PHP com o arquivo final da primeira
+versão de uma classe que criaremos.</p>
+<div class="sourceCode" id="cb10"><pre
+class="sourceCode php"><code class="sourceCode php"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;?php</span> <span class="co">// tag obrigatória para escrever script php</span></span>
+<span id="cb10-2"><a href="#cb10-2" aria-hidden="true" tabindex="-1"></a> </span>
+<span id="cb10-3"><a href="#cb10-3" aria-hidden="true" tabindex="-1"></a><span class="co">/*</span></span>
+<span id="cb10-4"><a href="#cb10-4" aria-hidden="true" tabindex="-1"></a><span class="co"> * Pacote/&quot;Sobrenome&quot; do arquivo, normalmente segue o padrão de pasta.</span></span>
+<span id="cb10-5"><a href="#cb10-5" aria-hidden="true" tabindex="-1"></a><span class="co"> * Arquivos com App\Services está na pasta app/services</span></span>
+<span id="cb10-6"><a href="#cb10-6" aria-hidden="true" tabindex="-1"></a><span class="co"> */</span></span>
+<span id="cb10-7"><a href="#cb10-7" aria-hidden="true" tabindex="-1"></a><span class="kw">namespace</span> <span class="cn">A</span>pp\<span class="cn">S</span>ervices<span class="ot">;</span></span>
+<span id="cb10-8"><a href="#cb10-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-9"><a href="#cb10-9" aria-hidden="true" tabindex="-1"></a><span class="co">// Importação de outras classes através de seu Namespace + nome da classe</span></span>
+<span id="cb10-10"><a href="#cb10-10" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="cn">A</span>pp\<span class="cn">M</span>odels\<span class="cn">A</span>mbiente<span class="ot">;</span></span>
+<span id="cb10-11"><a href="#cb10-11" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="cn">A</span>pp\<span class="cn">M</span>odels\<span class="cn">R</span>eserva<span class="ot">;</span></span>
+<span id="cb10-12"><a href="#cb10-12" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="cn">A</span>pp\<span class="cn">M</span>odels\<span class="cn">U</span>ser<span class="ot">;</span></span>
+<span id="cb10-13"><a href="#cb10-13" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb10-14"><a href="#cb10-14" aria-hidden="true" tabindex="-1"></a><span class="co">/* </span></span>
+<span id="cb10-15"><a href="#cb10-15" aria-hidden="true" tabindex="-1"></a><span class="co"> * Classe é como uma &quot;gaveta&quot; cujo possui:</span></span>
+<span id="cb10-16"><a href="#cb10-16" aria-hidden="true" tabindex="-1"></a><span class="co"> * propriedades: semelhantes a variáveis</span></span>
+<span id="cb10-17"><a href="#cb10-17" aria-hidden="true" tabindex="-1"></a><span class="co"> * métodos: semelhantes a funções</span></span>
+<span id="cb10-18"><a href="#cb10-18" aria-hidden="true" tabindex="-1"></a><span class="co"> */</span></span>
+<span id="cb10-19"><a href="#cb10-19" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> <span class="cn">R</span>eservaService</span>
+<span id="cb10-20"><a href="#cb10-20" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb10-21"><a href="#cb10-21" aria-hidden="true" tabindex="-1"></a>    <span class="co">// método</span></span>
+<span id="cb10-22"><a href="#cb10-22" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> criar(<span class="cn">A</span>mbiente <span class="va">$ambiente</span><span class="ot">,</span> <span class="cn">U</span>ser <span class="va">$usuario</span>)</span>
+<span id="cb10-23"><a href="#cb10-23" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb10-24"><a href="#cb10-24" aria-hidden="true" tabindex="-1"></a>        <span class="co">// variável com $</span></span>
+<span id="cb10-25"><a href="#cb10-25" aria-hidden="true" tabindex="-1"></a>        <span class="co">// propriedade acessada através de -&gt;</span></span>
+<span id="cb10-26"><a href="#cb10-26" aria-hidden="true" tabindex="-1"></a>        <span class="va">$reserva</span> <span class="op">=</span> <span class="kw">new</span> <span class="cn">R</span>eserva()<span class="ot">;</span></span>
+<span id="cb10-27"><a href="#cb10-27" aria-hidden="true" tabindex="-1"></a>        <span class="va">$reserva</span>-&gt;id_ambiente <span class="op">=</span> <span class="va">$ambiente</span>-&gt;id<span class="ot">;</span></span>
+<span id="cb10-28"><a href="#cb10-28" aria-hidden="true" tabindex="-1"></a>        <span class="va">$reserva</span>-&gt;id_usuario <span class="op">=</span> <span class="va">$usuario</span>-&gt;id<span class="ot">;</span></span>
+<span id="cb10-29"><a href="#cb10-29" aria-hidden="true" tabindex="-1"></a>        <span class="va">$reserva</span>-&gt;save()<span class="ot">;</span></span>
+<span id="cb10-30"><a href="#cb10-30" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb10-31"><a href="#cb10-31" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<h3 id="organização-proposta">Organização proposta</h3>
+<p>Mesmo utilizando laravel, cujo é um framework que estipula padrões
+para nós, podemos complementá-lo com nossas próprias definições, cujo
+serão:</p>
+<ul>
+<li>Toda regra de negócio envolverá passar por uma classe específica com
+o sufixo <code>Service</code></li>
+<li>Todo provedor de serviço externo, seja um <em>web service</em> ou
+biblioteca terá uma classe com o sufixo <code>Provider</code>, cujo
+implementará uma interface</li>
+</ul>
+<p>Cada um desses pontos vai ser abordado e aprofundado no decorrer do
+desenvolvimento do projeto.</p>
 <h3 id="configuração-inicial">Configuração inicial</h3>
 <ul>
 <li><a href="https://www.php.net/downloads.php">Baixe o PHP</a>, e
@@ -517,68 +595,187 @@ Composer</a></li>
 <h3 id="criação-do-projeto">Criação do projeto</h3>
 <p>Acesse a pasta onde guarda seus projetos, abra um terminal e
 execute</p>
-<div class="sourceCode" id="cb10"><pre
-class="sourceCode sh"><code class="sourceCode bash"><span id="cb10-1"><a href="#cb10-1" aria-hidden="true" tabindex="-1"></a><span class="ex">composer</span> create-project laravel/laravel reiserva</span></code></pre></div>
+<div class="sourceCode" id="cb11"><pre
+class="sourceCode sh"><code class="sourceCode bash"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="ex">composer</span> create-project laravel/laravel reiserva</span></code></pre></div>
 <h3 id="criando-a-reserva-simplificada">Criando a reserva
 simplificada</h3>
-<p>Trabalharemos com <em>TDD</em>, primeiro criamos um teste falho,
-fazemos ele passar, melhoramos e repetimos.</p>
-<p>Crie o teste com
-<code>php artisan make:test ReservaServiceTest</code>, edite o arquivo
-alterando o nome da função para <code>testReservaAmbiente</code>. Vamos
-testar que dado um usuário (<code>User</code>) e um ambiente, podemos
-criar uma reserva através da classe <code>ReservaService</code>.</p>
-<p>Crie as outras classes que usaremos:</p>
+<p>Vamos validar que dado um usuário (<code>User</code>) e um ambiente,
+podemos criar uma reserva através da classe
+<code>ReservaService</code>.</p>
+<ol type="1">
+<li>Crie o arquivo que vai possuir os testes com
+<code>php artisan make:test ReservaServiceTest</code> no terminal dentro
+do projeto</li>
+</ol>
+<blockquote>
+<p>Esse comando (scaffold) é uma facilidade do Laravel, cujo vai criar o
+arquivo de teste no local correto. Durante o andamento do projeto
+utilizaremos outros semelhantes a esse</p>
+</blockquote>
+<ol start="2" type="1">
+<li>Crie o teste <code>testReservaAmbiente</code> como abaixo</li>
+</ol>
+<blockquote>
+<p>A nomenclatura de testes utilizada é a do <a
+href="https://github.com/spotify/should-up">Spotify</a></p>
+</blockquote>
+<blockquote>
+<p><em>SUT</em> significa <em>System Under Test</em></p>
+</blockquote>
+<div class="sourceCode" id="cb12"><pre
+class="sourceCode php"><code class="sourceCode php"><span id="cb12-1"><a href="#cb12-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;?php</span></span>
+<span id="cb12-2"><a href="#cb12-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-3"><a href="#cb12-3" aria-hidden="true" tabindex="-1"></a><span class="kw">namespace</span> <span class="cn">T</span>ests\<span class="cn">U</span>nit<span class="ot">;</span></span>
+<span id="cb12-4"><a href="#cb12-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-5"><a href="#cb12-5" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="cn">A</span>pp\<span class="cn">M</span>odels\<span class="cn">U</span>ser<span class="ot">;</span></span>
+<span id="cb12-6"><a href="#cb12-6" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="cn">A</span>pp\<span class="cn">M</span>odels\<span class="cn">A</span>mbiente<span class="ot">;</span></span>
+<span id="cb12-7"><a href="#cb12-7" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="cn">A</span>pp\<span class="cn">M</span>odels\<span class="cn">R</span>eserva<span class="ot">;</span></span>
+<span id="cb12-8"><a href="#cb12-8" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="cn">A</span>pp\<span class="cn">S</span>ervices\<span class="cn">R</span>eservaService<span class="ot">;</span></span>
+<span id="cb12-9"><a href="#cb12-9" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="cn">I</span>lluminate\<span class="cn">F</span>oundation\<span class="cn">T</span>esting\<span class="cn">R</span>efreshDatabase<span class="ot">;</span></span>
+<span id="cb12-10"><a href="#cb12-10" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="cn">T</span>ests\<span class="cn">T</span>estCase<span class="ot">;</span></span>
+<span id="cb12-11"><a href="#cb12-11" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-12"><a href="#cb12-12" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> <span class="cn">R</span>eservaServiceTest <span class="kw">extends</span> <span class="cn">T</span>estCase</span>
+<span id="cb12-13"><a href="#cb12-13" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb12-14"><a href="#cb12-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">use</span> <span class="cn">R</span>efreshDatabase<span class="ot">;</span></span>
+<span id="cb12-15"><a href="#cb12-15" aria-hidden="true" tabindex="-1"></a>    </span>
+<span id="cb12-16"><a href="#cb12-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> testReservaAmbiente()<span class="ot">:</span> <span class="dt">void</span></span>
+<span id="cb12-17"><a href="#cb12-17" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb12-18"><a href="#cb12-18" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Arrange: usuário existente</span></span>
+<span id="cb12-19"><a href="#cb12-19" aria-hidden="true" tabindex="-1"></a>        <span class="va">$usuario</span> <span class="op">=</span> <span class="kw">new</span> <span class="cn">U</span>ser([</span>
+<span id="cb12-20"><a href="#cb12-20" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;name&#39;</span> =&gt; <span class="st">&#39;Fulano de tal&#39;</span><span class="ot">,</span></span>
+<span id="cb12-21"><a href="#cb12-21" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;email&#39;</span> =&gt;<span class="st">&#39;fulano@tal.com&#39;</span><span class="ot">,</span></span>
+<span id="cb12-22"><a href="#cb12-22" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;password&#39;</span>=&gt; <span class="st">&#39;123&#39;</span><span class="ot">,</span></span>
+<span id="cb12-23"><a href="#cb12-23" aria-hidden="true" tabindex="-1"></a>        ])<span class="ot">;</span></span>
+<span id="cb12-24"><a href="#cb12-24" aria-hidden="true" tabindex="-1"></a>        <span class="va">$usuario</span>-&gt;save()<span class="ot">;</span></span>
+<span id="cb12-25"><a href="#cb12-25" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-26"><a href="#cb12-26" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Arrange: ambiente existente</span></span>
+<span id="cb12-27"><a href="#cb12-27" aria-hidden="true" tabindex="-1"></a>        <span class="va">$ambiente</span> <span class="op">=</span> <span class="kw">new</span> <span class="cn">A</span>mbiente()<span class="ot">;</span></span>
+<span id="cb12-28"><a href="#cb12-28" aria-hidden="true" tabindex="-1"></a>        <span class="va">$ambiente</span>-&gt;nome <span class="op">=</span> <span class="st">&#39;Salão de festas&#39;</span><span class="ot">;</span></span>
+<span id="cb12-29"><a href="#cb12-29" aria-hidden="true" tabindex="-1"></a>        <span class="va">$ambiente</span>-&gt;save()<span class="ot">;</span></span>
+<span id="cb12-30"><a href="#cb12-30" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-31"><a href="#cb12-31" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Act: criação da reserva</span></span>
+<span id="cb12-32"><a href="#cb12-32" aria-hidden="true" tabindex="-1"></a>        <span class="va">$sut</span> <span class="op">=</span> <span class="kw">new</span> <span class="cn">R</span>eservaService()<span class="ot">;</span></span>
+<span id="cb12-33"><a href="#cb12-33" aria-hidden="true" tabindex="-1"></a>        <span class="va">$sut</span>-&gt;criar(<span class="va">$ambiente</span><span class="ot">,</span> <span class="va">$usuario</span>)<span class="ot">;</span></span>
+<span id="cb12-34"><a href="#cb12-34" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb12-35"><a href="#cb12-35" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Assert: existência da reserva no banco de dados</span></span>
+<span id="cb12-36"><a href="#cb12-36" aria-hidden="true" tabindex="-1"></a>        <span class="va">$this</span>-&gt;assertDatabaseHas(<span class="cn">R</span>eserva::<span class="kw">class</span><span class="ot">,</span> [</span>
+<span id="cb12-37"><a href="#cb12-37" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;id_ambiente&#39;</span>=&gt; <span class="va">$ambiente</span>-&gt;id<span class="ot">,</span></span>
+<span id="cb12-38"><a href="#cb12-38" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;id_usuario&#39;</span>=&gt; <span class="va">$usuario</span>-&gt;id</span>
+<span id="cb12-39"><a href="#cb12-39" aria-hidden="true" tabindex="-1"></a>        ])<span class="ot">;</span></span>
+<span id="cb12-40"><a href="#cb12-40" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb12-41"><a href="#cb12-41" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<ol start="3" type="1">
+<li>Execute o teste com
+<code>php artisan test --filter testReservaAmbiente</code> e perceba que
+falhou por faltar algumas dessas classes</li>
+</ol>
+<div class="sourceCode" id="cb13"><pre
+class="sourceCode txt"><code class="sourceCode default"><span id="cb13-1"><a href="#cb13-1" aria-hidden="true" tabindex="-1"></a>FAILED  Tests\Unit\ReservaServiceTest &gt; reserva ambiente</span>
+<span id="cb13-2"><a href="#cb13-2" aria-hidden="true" tabindex="-1"></a>Class &quot;Tests\Unit\User&quot; not found</span></code></pre></div>
+<ol start="5" type="1">
+<li>Crie as classes que faltam:</li>
+</ol>
 <ul>
+<li>As models com <code>php artisan make:model Reserva</code>
+<code>php artisan make:model Ambiente</code></li>
 <li><code>ReservaService</code> como
-<code>app/Services/ReservaService.test</code></li>
-<li>As models com <code>php arisan make:model Reserva</code>
-<code>php arisan make:model Ambiente</code></li>
+<code>app/Services/ReservaService.test</code> (não tem comando pra esse,
+já que é convenção nossa)</li>
 </ul>
-<div class="sourceCode" id="cb11"><pre
-class="sourceCode php"><code class="sourceCode php"><span id="cb11-1"><a href="#cb11-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;?php</span></span>
-<span id="cb11-2"><a href="#cb11-2" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-3"><a href="#cb11-3" aria-hidden="true" tabindex="-1"></a><span class="kw">namespace</span> <span class="cn">T</span>ests\<span class="cn">U</span>nit<span class="ot">;</span></span>
-<span id="cb11-4"><a href="#cb11-4" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-5"><a href="#cb11-5" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="cn">A</span>pp\<span class="cn">M</span>odels\<span class="cn">U</span>ser<span class="ot">;</span></span>
-<span id="cb11-6"><a href="#cb11-6" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="cn">A</span>pp\<span class="cn">M</span>odels\<span class="cn">A</span>mbiente<span class="ot">;</span></span>
-<span id="cb11-7"><a href="#cb11-7" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="cn">A</span>pp\<span class="cn">M</span>odels\<span class="cn">R</span>eserva<span class="ot">;</span></span>
-<span id="cb11-8"><a href="#cb11-8" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="cn">A</span>pp\<span class="cn">S</span>ervices\<span class="cn">R</span>eservaService<span class="ot">;</span></span>
-<span id="cb11-9"><a href="#cb11-9" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="cn">I</span>lluminate\<span class="cn">F</span>oundation\<span class="cn">T</span>esting\<span class="cn">R</span>efreshDatabase<span class="ot">;</span></span>
-<span id="cb11-10"><a href="#cb11-10" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="cn">T</span>ests\<span class="cn">T</span>estCase<span class="ot">;</span></span>
-<span id="cb11-11"><a href="#cb11-11" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-12"><a href="#cb11-12" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> <span class="cn">R</span>eservaServiceTest <span class="kw">extends</span> <span class="cn">T</span>estCase</span>
-<span id="cb11-13"><a href="#cb11-13" aria-hidden="true" tabindex="-1"></a>{</span>
-<span id="cb11-14"><a href="#cb11-14" aria-hidden="true" tabindex="-1"></a>    <span class="kw">use</span> <span class="cn">R</span>efreshDatabase<span class="ot">;</span></span>
-<span id="cb11-15"><a href="#cb11-15" aria-hidden="true" tabindex="-1"></a>    </span>
-<span id="cb11-16"><a href="#cb11-16" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> testReservaAmbiente()<span class="ot">:</span> <span class="dt">void</span></span>
-<span id="cb11-17"><a href="#cb11-17" aria-hidden="true" tabindex="-1"></a>    {</span>
-<span id="cb11-18"><a href="#cb11-18" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Arrange: usuário existente</span></span>
-<span id="cb11-19"><a href="#cb11-19" aria-hidden="true" tabindex="-1"></a>        <span class="va">$usuario</span> <span class="op">=</span> <span class="kw">new</span> <span class="cn">U</span>ser([</span>
-<span id="cb11-20"><a href="#cb11-20" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;name&#39;</span> =&gt; <span class="st">&#39;Fulano de tal&#39;</span><span class="ot">,</span></span>
-<span id="cb11-21"><a href="#cb11-21" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;email&#39;</span> =&gt;<span class="st">&#39;fulano@tal.com&#39;</span><span class="ot">,</span></span>
-<span id="cb11-22"><a href="#cb11-22" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;password&#39;</span>=&gt; <span class="st">&#39;123&#39;</span><span class="ot">,</span></span>
-<span id="cb11-23"><a href="#cb11-23" aria-hidden="true" tabindex="-1"></a>        ])<span class="ot">;</span></span>
-<span id="cb11-24"><a href="#cb11-24" aria-hidden="true" tabindex="-1"></a>        <span class="va">$usuario</span>-&gt;save()<span class="ot">;</span></span>
-<span id="cb11-25"><a href="#cb11-25" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-26"><a href="#cb11-26" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Arrange: ambiente existente</span></span>
-<span id="cb11-27"><a href="#cb11-27" aria-hidden="true" tabindex="-1"></a>        <span class="va">$ambiente</span> <span class="op">=</span> <span class="kw">new</span> <span class="cn">A</span>mbiente()<span class="ot">;</span></span>
-<span id="cb11-28"><a href="#cb11-28" aria-hidden="true" tabindex="-1"></a>        <span class="va">$ambiente</span>-&gt;nome <span class="op">=</span> <span class="st">&#39;Salão de festas&#39;</span><span class="ot">;</span></span>
-<span id="cb11-29"><a href="#cb11-29" aria-hidden="true" tabindex="-1"></a>        <span class="va">$ambiente</span>-&gt;save()<span class="ot">;</span></span>
-<span id="cb11-30"><a href="#cb11-30" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-31"><a href="#cb11-31" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Act: criação da reserva</span></span>
-<span id="cb11-32"><a href="#cb11-32" aria-hidden="true" tabindex="-1"></a>        <span class="va">$sut</span> <span class="op">=</span> <span class="kw">new</span> <span class="cn">R</span>eservaService()<span class="ot">;</span></span>
-<span id="cb11-33"><a href="#cb11-33" aria-hidden="true" tabindex="-1"></a>        <span class="va">$sut</span>-&gt;criar(<span class="va">$ambiente</span><span class="ot">,</span> <span class="va">$usuario</span>)<span class="ot">;</span></span>
-<span id="cb11-34"><a href="#cb11-34" aria-hidden="true" tabindex="-1"></a></span>
-<span id="cb11-35"><a href="#cb11-35" aria-hidden="true" tabindex="-1"></a>        <span class="co">// Assert: existência da reserva no banco de dados</span></span>
-<span id="cb11-36"><a href="#cb11-36" aria-hidden="true" tabindex="-1"></a>        <span class="va">$this</span>-&gt;assertDatabaseHas(<span class="cn">R</span>eserva::<span class="kw">class</span><span class="ot">,</span> [</span>
-<span id="cb11-37"><a href="#cb11-37" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;id_ambiente&#39;</span>=&gt; <span class="va">$ambiente</span>-&gt;id<span class="ot">,</span></span>
-<span id="cb11-38"><a href="#cb11-38" aria-hidden="true" tabindex="-1"></a>            <span class="st">&#39;id_usuario&#39;</span>=&gt; <span class="va">$usuario</span>-&gt;id</span>
-<span id="cb11-39"><a href="#cb11-39" aria-hidden="true" tabindex="-1"></a>        ])<span class="ot">;</span></span>
-<span id="cb11-40"><a href="#cb11-40" aria-hidden="true" tabindex="-1"></a>    }</span>
-<span id="cb11-41"><a href="#cb11-41" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
-<!-- migration -->
-<!-- explicar centralização de regra de negocio na service -->
+<div class="sourceCode" id="cb14"><pre
+class="sourceCode php"><code class="sourceCode php"><span id="cb14-1"><a href="#cb14-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;?php</span></span>
+<span id="cb14-2"><a href="#cb14-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-3"><a href="#cb14-3" aria-hidden="true" tabindex="-1"></a><span class="kw">namespace</span> <span class="cn">A</span>pp\<span class="cn">S</span>ervices<span class="ot">;</span></span>
+<span id="cb14-4"><a href="#cb14-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb14-5"><a href="#cb14-5" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> <span class="cn">R</span>eservaService</span>
+<span id="cb14-6"><a href="#cb14-6" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb14-7"><a href="#cb14-7" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> criar()</span>
+<span id="cb14-8"><a href="#cb14-8" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb14-9"><a href="#cb14-9" aria-hidden="true" tabindex="-1"></a>        <span class="co">// ...</span></span>
+<span id="cb14-10"><a href="#cb14-10" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb14-11"><a href="#cb14-11" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
+<ol start="6" type="1">
+<li>Reexecute o teste
+(<code>php artisan test --filter testReservaAmbiente</code>) e perceba
+que o erro mudou. Agora ele está falhando pois não sabe persistir
+(<code>-&gt;save()</code>) o ambiente (<code>User</code> é uma entidade
+existente no laravel). Precisamos criar as tabelas nos bancos, porém não
+de qualquer forma, mas sim com <em>migrations</em>.</li>
+</ol>
+<div class="sourceCode" id="cb15"><pre
+class="sourceCode txt"><code class="sourceCode default"><span id="cb15-1"><a href="#cb15-1" aria-hidden="true" tabindex="-1"></a>FAILED  Tests\Unit\ReservaServiceTest &gt; reserva ambiente   </span>
+<span id="cb15-2"><a href="#cb15-2" aria-hidden="true" tabindex="-1"></a>SQLSTATE[42S02]: Base table or view not found: 1146 Table &#39;testing.ambientes&#39; doesn&#39;t exist (Connection: mysql, SQL: insert into `ambientes` (`nome`, `updated_at`, `created_at`) values (Salão de festas, 2023-06-22 07:07:23, 2023-06-22 07:07:23))</span></code></pre></div>
+<blockquote>
+<p><em>Migration</em> é um script que é lido e possui o proposito de
+alterar a estrutura do banco de dados, seja criando tabelas ou até
+modificando-as (renomeando campos, mudando seus tipos etc)</p>
+</blockquote>
+<ol start="7" type="1">
+<li>Crie a migration com
+<code>php artisan make:migration cria_ambiente --create=ambientes</code>
+e acesse o arquivo criado dentro de <code>database/migrations</code>.
+Adicione nas propriedades o nome do ambiente.</li>
+</ol>
+<div class="sourceCode" id="cb16"><pre
+class="sourceCode php"><code class="sourceCode php"><span id="cb16-1"><a href="#cb16-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;?php</span></span>
+<span id="cb16-2"><a href="#cb16-2" aria-hidden="true" tabindex="-1"></a><span class="co">// ...</span></span>
+<span id="cb16-3"><a href="#cb16-3" aria-hidden="true" tabindex="-1"></a>        <span class="cn">S</span>chema::create(<span class="st">&#39;ambientes&#39;</span><span class="ot">,</span> <span class="kw">function</span> (<span class="cn">B</span>lueprint <span class="va">$table</span>) {</span>
+<span id="cb16-4"><a href="#cb16-4" aria-hidden="true" tabindex="-1"></a>            <span class="va">$table</span>-&gt;id()<span class="ot">;</span></span>
+<span id="cb16-5"><a href="#cb16-5" aria-hidden="true" tabindex="-1"></a>            <span class="va">$table</span>-&gt;<span class="dt">string</span>(<span class="st">&#39;nome&#39;</span>)<span class="ot">;</span></span>
+<span id="cb16-6"><a href="#cb16-6" aria-hidden="true" tabindex="-1"></a>            <span class="va">$table</span>-&gt;timestamps()<span class="ot">;</span></span>
+<span id="cb16-7"><a href="#cb16-7" aria-hidden="true" tabindex="-1"></a>        })<span class="ot">;</span></span>
+<span id="cb16-8"><a href="#cb16-8" aria-hidden="true" tabindex="-1"></a><span class="co">// ...</span></span></code></pre></div>
+<ol start="8" type="1">
+<li>Reexecute o teste
+(<code>php artisan test --filter testReservaAmbiente</code>) e perceba
+que ocorreu o mesmo com a tabela de reservas. Crie uma nova migration
+com
+<code>php artisan make:migration cria_ambiente --create=reservas</code></li>
+</ol>
+<div class="sourceCode" id="cb17"><pre
+class="sourceCode php"><code class="sourceCode php"><span id="cb17-1"><a href="#cb17-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;?php</span></span>
+<span id="cb17-2"><a href="#cb17-2" aria-hidden="true" tabindex="-1"></a><span class="co">// ...</span></span>
+<span id="cb17-3"><a href="#cb17-3" aria-hidden="true" tabindex="-1"></a>        <span class="cn">S</span>chema::create(<span class="st">&#39;reservas&#39;</span><span class="ot">,</span> <span class="kw">function</span> (<span class="cn">B</span>lueprint <span class="va">$table</span>) {</span>
+<span id="cb17-4"><a href="#cb17-4" aria-hidden="true" tabindex="-1"></a>            <span class="va">$table</span>-&gt;id()<span class="ot">;</span></span>
+<span id="cb17-5"><a href="#cb17-5" aria-hidden="true" tabindex="-1"></a>            <span class="va">$table</span>-&gt;foreignId(<span class="st">&#39;id_usuario&#39;</span>)-&gt;constrained(<span class="st">&#39;users&#39;</span>)<span class="ot">;</span></span>
+<span id="cb17-6"><a href="#cb17-6" aria-hidden="true" tabindex="-1"></a>            <span class="va">$table</span>-&gt;foreignId(<span class="st">&#39;id_ambiente&#39;</span>)-&gt;constrained(<span class="st">&#39;ambientes&#39;</span>)<span class="ot">;</span></span>
+<span id="cb17-7"><a href="#cb17-7" aria-hidden="true" tabindex="-1"></a>            <span class="va">$table</span>-&gt;timestamps()<span class="ot">;</span></span>
+<span id="cb17-8"><a href="#cb17-8" aria-hidden="true" tabindex="-1"></a>        })<span class="ot">;</span></span>
+<span id="cb17-9"><a href="#cb17-9" aria-hidden="true" tabindex="-1"></a><span class="co">// ...</span></span></code></pre></div>
+<ol start="9" type="1">
+<li>Reexecute o teste e o erro muda, agora ele está falhando pois não
+foi encontrada uma reserva persistida com o id do usuário e do
+ambiente</li>
+</ol>
+<div class="sourceCode" id="cb18"><pre
+class="sourceCode txt"><code class="sourceCode default"><span id="cb18-1"><a href="#cb18-1" aria-hidden="true" tabindex="-1"></a>FAILED  Tests\Unit\ReservaServiceTest &gt; reserva ambiente                                  </span>
+<span id="cb18-2"><a href="#cb18-2" aria-hidden="true" tabindex="-1"></a>Failed asserting that a row in the table [reservas] matches the attributes {</span>
+<span id="cb18-3"><a href="#cb18-3" aria-hidden="true" tabindex="-1"></a>  &quot;id_ambiente&quot;: 1,</span>
+<span id="cb18-4"><a href="#cb18-4" aria-hidden="true" tabindex="-1"></a>  &quot;id_usuario&quot;: 1</span>
+<span id="cb18-5"><a href="#cb18-5" aria-hidden="true" tabindex="-1"></a>}.</span></code></pre></div>
+<ol start="10" type="1">
+<li>Vamos finalizar a funcionalidade persistindo a <em>Reserva</em> no
+<em>Service</em>, reexecutar o teste e validar o sucesso</li>
+</ol>
+<div class="sourceCode" id="cb19"><pre
+class="sourceCode php"><code class="sourceCode php"><span id="cb19-1"><a href="#cb19-1" aria-hidden="true" tabindex="-1"></a><span class="kw">&lt;?php</span></span>
+<span id="cb19-2"><a href="#cb19-2" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-3"><a href="#cb19-3" aria-hidden="true" tabindex="-1"></a><span class="kw">namespace</span> <span class="cn">A</span>pp\<span class="cn">S</span>ervices<span class="ot">;</span></span>
+<span id="cb19-4"><a href="#cb19-4" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-5"><a href="#cb19-5" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="cn">A</span>pp\<span class="cn">M</span>odels\<span class="cn">A</span>mbiente<span class="ot">;</span></span>
+<span id="cb19-6"><a href="#cb19-6" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="cn">A</span>pp\<span class="cn">M</span>odels\<span class="cn">R</span>eserva<span class="ot">;</span></span>
+<span id="cb19-7"><a href="#cb19-7" aria-hidden="true" tabindex="-1"></a><span class="kw">use</span> <span class="cn">A</span>pp\<span class="cn">M</span>odels\<span class="cn">U</span>ser<span class="ot">;</span></span>
+<span id="cb19-8"><a href="#cb19-8" aria-hidden="true" tabindex="-1"></a></span>
+<span id="cb19-9"><a href="#cb19-9" aria-hidden="true" tabindex="-1"></a><span class="kw">class</span> <span class="cn">R</span>eservaService</span>
+<span id="cb19-10"><a href="#cb19-10" aria-hidden="true" tabindex="-1"></a>{</span>
+<span id="cb19-11"><a href="#cb19-11" aria-hidden="true" tabindex="-1"></a>    <span class="kw">public</span> <span class="kw">function</span> criar(<span class="cn">A</span>mbiente <span class="va">$ambiente</span><span class="ot">,</span> <span class="cn">U</span>ser <span class="va">$usuario</span>)</span>
+<span id="cb19-12"><a href="#cb19-12" aria-hidden="true" tabindex="-1"></a>    {</span>
+<span id="cb19-13"><a href="#cb19-13" aria-hidden="true" tabindex="-1"></a>        <span class="va">$reserva</span> <span class="op">=</span> <span class="kw">new</span> <span class="cn">R</span>eserva()<span class="ot">;</span></span>
+<span id="cb19-14"><a href="#cb19-14" aria-hidden="true" tabindex="-1"></a>        <span class="va">$reserva</span>-&gt;id_ambiente <span class="op">=</span> <span class="va">$ambiente</span>-&gt;id<span class="ot">;</span></span>
+<span id="cb19-15"><a href="#cb19-15" aria-hidden="true" tabindex="-1"></a>        <span class="va">$reserva</span>-&gt;id_usuario <span class="op">=</span> <span class="va">$usuario</span>-&gt;id<span class="ot">;</span></span>
+<span id="cb19-16"><a href="#cb19-16" aria-hidden="true" tabindex="-1"></a>        <span class="va">$reserva</span>-&gt;save()<span class="ot">;</span></span>
+<span id="cb19-17"><a href="#cb19-17" aria-hidden="true" tabindex="-1"></a>    }</span>
+<span id="cb19-18"><a href="#cb19-18" aria-hidden="true" tabindex="-1"></a>}</span></code></pre></div>
 <!-- diagrama de arquitetura proposta rota -] controller -] service-->
 <h2 id="introdução-à-sql">Introdução à SQL</h2>
 </body>
