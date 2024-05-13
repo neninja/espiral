@@ -2,34 +2,12 @@
 
 # Espiral: comece entendendo sistemas para internet
 
-Livro para iniciar pessoas interessadas na área de desenvolvimento web.
+[Conteúdo](http://neni.dev/espiral) para iniciar pessoas interessadas na área de desenvolvimento web.
 
-- [Objetivos](https://github.com/nenitf/intro-dev-web/milestones?with_issues=no)
-- [Planejamento](https://github.com/users/nenitf/projects/6/views/1)
+## Setup local
 
-## Leia ✨ gratuitamente ✨
-
-- [Visualização online](http://neni.dev/intro-dev-web)
-- [Download PDF](https://github.com/nenitf/intro-dev-web/releases/latest/download/intro-dev-web.pdf)
-- [Download EPUB](https://github.com/nenitf/intro-dev-web/releases/latest/download/intro-dev-web.epub)
-
-## Desenvolvimento
-
-### Build local
-
-- Todos formatos
+- Baixe a versão extendida do [Hugo](https://github.com/gohugoio/hugo/releases)
+- Suba o servidor e acesse `localhost:1313/espiral`
 ```sh
-make all
+hugo server --minify
 ```
-
-- Livros (PDF e EPUB)
-```sh
-make book
-```
-
-- Site
-```sh
-make html
-```
-
-> Caso não possua docker e/ou make, dê uma olhada no funcionamento do `Makefile`, `docker-compose-*.yml` e seus scripts em bash para ver quais dependências baixar para executar

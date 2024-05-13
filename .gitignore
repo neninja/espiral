@@ -1,4 +1,4 @@
-intro-dev-web.pdf
-intro-dev-web.html
-intro-dev-web.epub
-*.svg
+.hugo_build.lock
+_gen
+.vimwiki_tags
+public
