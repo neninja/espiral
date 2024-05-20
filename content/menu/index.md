@@ -2,6 +2,7 @@
 headless: true
 ---
 
+- [O que faremos]({{< relref "/docs/proposta" >}})
 - [Configurando o ambiente]({{< relref "/docs/config" >}})
 - [Criando o projeto e Hello World]({{< relref "/docs/hello" >}})
 - [Planejamento do projeto]({{< relref "/docs/overview" >}})
@@ -16,4 +17,3 @@ headless: true
 - [Acesso ao sistema com interface Web]({{< relref "/docs/web" >}})
 - [Autenticação na Web]({{< relref "/docs/web-auth" >}})
 - [Conclusão]({{< relref "/docs/fim" >}})
-<hr />
