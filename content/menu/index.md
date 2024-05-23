@@ -6,7 +6,6 @@ headless: true
 - [Configurando o ambiente]({{< relref "/docs/config" >}})
 - [Criando o projeto e Hello World]({{< relref "/docs/hello" >}})
 - [Planejamento do projeto]({{< relref "/docs/overview" >}})
-- [Utilização do Git]({{< relref "/docs/git" >}})
 - [`C` do CRUD]({{< relref "/docs/crud-letra-c" >}})
 - [`R` do CRUD]({{< relref "/docs/crud-letra-R" >}})
 - [`U` do CRUD]({{< relref "/docs/crud-letra-u" >}})
