@@ -12,6 +12,11 @@ Como instruído pela [documentação oficial do Laravel](https://laravel.com/doc
 - Caso saiba configurar um atalho, faça para não precisar ficar digitando "*./vendor/bin/...*". No decorrer do material utilizarei somente `sail` por já tenho um atalho/alias no terminal.
 {{< /hint >}}
 
+{{< hint info >}}
+***Migrations***  
+Utilizamos as migrations existentes para criar as tabelas do banco. Esse assunto será abordado melhor no momento adequado, mas caso esteja curioso [leia a documentação](https://laravel.com/docs/11.x/migrations)
+{{< /hint >}}
+
 # Utilizando Git
 
 Simplificando a utilização de Git, ele é basicamente um gerenciador de versões do seu projeto. Com ele iremos especificar "momentos" e daremos nome as alterações em "commites" e depois enviaremos esse historico para o Github, cujo irá servir como "backup online" do projeto com todos os arquivos versionados pelo git.
