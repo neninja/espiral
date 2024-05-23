@@ -1,7 +1,23 @@
 # Arquitetura de dependências
+
+Explicando como será o fluxo de dependência, de onde sai a informação e até onde ela chega e como retorna. No decorrer do desenvolvimento vai ficar mais claro, mas em resumo as *controllers* (classes específicas) receberão a requisição e vão acionar *services* para fazer executar a regra de negócio. Será feito dessa forma para reaproveitar a partir de outras entradas, como comandos ou *cronjobs*.
+
+{{< mermaid >}}
+graph LR
+    url[Acessar site] --> Controller --> Service[Classe serviço]
+    Cron --> Job --> Service
+    Command --> Service
+    Service --> Service
+    Controller --> View
+    Controller --> Json
+{{< /mermaid >}}
+
 # Testes
 
 ## TDD
+
+Aproveitando essa organização de arquivos, orientaremos o desenvolvimento testes automatizados que o [Laravel auxilia](https://laravel.com/docs/11.x/testing). O fluxo sempre será de 1) *red* para 2) green e, por fim, 3) blue. Caso o teste seja modificado recomeça.
+
 {{< mermaid >}}
 graph TD
     style RED fill:LightCoral
@@ -33,6 +49,12 @@ graph TD
 
     r4 --> g1
     g4 --> b1
-    b3 -- Novo teste --> r1
 {{< /mermaid >}}
+
 # Casos de uso
+
+- Usuários devem poder logar/deslogar
+- Usuário administrador deve poder cadastrar outros usuários como funcionários
+- Administrador e funcionário devem poder cadastrar usuários como clientes
+- Administrador e funcionario devem poder cadastrar um ambiente
+- Cliente deve poder reservar um ambiente
